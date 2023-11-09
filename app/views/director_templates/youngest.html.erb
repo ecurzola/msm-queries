@@ -1,0 +1,10 @@
+<h1>Youngest director</h1>
+
+<% youngest = Director.all.order({:dob => :desc}).first %>
+<% yougest_id = youngest.id %>
+<% yougest_name = youngest.name %>
+<% yougest_dob = youngest.dob %>
+
+<p>The youngest director in our dataset right now is <a href="/directors/<%= yougest_id %>"> <%= yougest_name %></a>
+
+, born on <%= yougest_dob %>.</p>

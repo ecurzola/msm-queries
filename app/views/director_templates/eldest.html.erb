@@ -1,8 +1,10 @@
 <h1>Eldest director</h1>
 
-<% eldest = Director.all.order({:dob => :asc}).first %>
+<% eldest_data = Director.where.not({ :dob => nil }) %>
+<% eldest = eldest_data.all.order({:dob => :asc}).first %>
 <% eldest_id = eldest.id %>
 <% eldest_name = eldest.name %>
 <% eldest_dob = eldest.dob %>
+<% eldest_date = eldest_dob.strftime("%B %d, %Y") %>
 
-<p>The eldest director in our dataset right now is <a href="/directors/<%= eldest_id %>"><%= eldest_name %></a>, born on <%= eldest_dob %>.</p>
+<p>The eldest director in our dataset right now is <a href="/directors/<%= eldest_id %>"><%= eldest_name %></a>, born on <%= eldest_date %>.</p>

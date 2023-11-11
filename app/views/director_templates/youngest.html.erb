@@ -1,9 +1,10 @@
 <h1>Youngest director</h1>
 
-<% youngest = Director.all.order({:dob => :desc}).first %>
+<% youngest_data = Director.where.not({ :dob => nil }) %>
+<% youngest = youngest_data.all.order({:dob => :desc}).first %>
 <% yougest_id = youngest.id %>
 <% yougest_name = youngest.name %>
-<% yougest_dob = youngest.dob %>
+<% yougest_dob = youngest.dob.strftime("%B %d, %Y") %>
 
 <p>The youngest director in our dataset right now is <a href="/directors/<%= yougest_id %>"> <%= yougest_name %></a>
 
